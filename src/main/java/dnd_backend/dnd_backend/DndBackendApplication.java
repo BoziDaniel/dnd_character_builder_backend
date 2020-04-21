@@ -2,6 +2,7 @@ package dnd_backend.dnd_backend;
 
 import dnd_backend.dnd_backend.service.dao.ItemDao;
 import dnd_backend.dnd_backend.service.data_handling.APIService;
+import dnd_backend.dnd_backend.service.data_handling.FillUpMem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
@@ -14,11 +15,11 @@ import java.io.IOException;
 public class DndBackendApplication {
 
     @Autowired
-    private APIService apiService;
-
-    @Autowired
     @Qualifier("itemService")
     private ItemDao itemDao;
+
+    @Autowired
+    FillUpMem fillUpMem;
 
 
     public static void main(String[] args) {
@@ -27,7 +28,6 @@ public class DndBackendApplication {
 
     @PostConstruct
     public void afterInit() throws IOException {
-        apiService.getAllItems();
-        System.out.println(itemDao.getAllItems());
+        fillUpMem.fillUpItemMem();
     }
 }

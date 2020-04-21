@@ -15,13 +15,18 @@ public class ItemDaoMem implements ItemDao {
 
 
     @Override
-    public List<Item> getAllItems() {
+    public List<Item> getItems() {
         return items;
     }
 
     @Override
     public void add(Item item) {
         items.add(item);
+    }
+
+    @Override
+    public void setItems(List<Item> newItems) {
+        items = newItems;
     }
 
 }

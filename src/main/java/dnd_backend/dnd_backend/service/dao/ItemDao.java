@@ -7,7 +7,9 @@ import java.util.List;
 
 public interface ItemDao {
 
-    List<Item> getAllItems();
+    List<Item> getItems();
+
+    void setItems(List<Item> newItems);
 
     void add(Item item);
 

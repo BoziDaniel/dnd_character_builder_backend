@@ -18,7 +18,7 @@ public class CharacterBuilderController {
 
     @GetMapping("/item/list")
     public List<Item> items() {
-        return itemDao.getAllItems();
+        return itemDao.getItems();
     }
 
 

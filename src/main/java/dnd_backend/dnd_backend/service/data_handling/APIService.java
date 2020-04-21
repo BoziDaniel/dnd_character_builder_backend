@@ -27,7 +27,6 @@ public class APIService {
 		JSONObject json = new JSONObject(result);
 		JSONArray jsonArray = json.getJSONArray("results");
 		addItemsToList(jsonArray);
-		System.out.println(items);
 
 		return items;
 	}
