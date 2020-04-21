@@ -49,23 +49,6 @@ public class ItemAPIService {
 		}
 	}
 
-/*
-	private void addItemsToList(JSONArray jsonArray) {
-		jsonArray.forEach(resultObject -> {
-
-			JSONObject itemObject = (JSONObject) resultObject;
-			String itemUrl = itemObject.getString("url");
-
-			JSONObject detailedItemObject = getNestedFetchData(itemUrl);
-			JSONObject itemCostObject = (JSONObject) detailedItemObject.get("cost");
-
-			items.add(new Item(detailedItemObject.get("name").toString(),
-					itemCostObject.get("unit").toString(),
-					Double.parseDouble(itemCostObject.get("quantity").toString())));
-		});
-	}
-*/
-
 	private JSONObject getNestedFetchData(String url) {
 		try {
 
