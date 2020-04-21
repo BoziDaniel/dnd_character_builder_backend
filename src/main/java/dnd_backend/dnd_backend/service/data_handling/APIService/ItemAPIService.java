@@ -1,6 +1,7 @@
-package dnd_backend.dnd_backend.service.data_handling;
+package dnd_backend.dnd_backend.service.data_handling.APIService;
 
 import dnd_backend.dnd_backend.model.Item;
+import dnd_backend.dnd_backend.service.data_handling.RemoteURLReader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class APIService {
+public class ItemAPIService {
 
 	@Autowired
 	private RemoteURLReader remoteURLReader;

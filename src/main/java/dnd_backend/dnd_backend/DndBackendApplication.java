@@ -1,7 +1,6 @@
 package dnd_backend.dnd_backend;
 
 import dnd_backend.dnd_backend.service.dao.ItemDao;
-import dnd_backend.dnd_backend.service.data_handling.APIService;
 import dnd_backend.dnd_backend.service.data_handling.FillUpMem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,10 +12,6 @@ import java.io.IOException;
 
 @SpringBootApplication
 public class DndBackendApplication {
-
-    @Autowired
-    @Qualifier("itemService")
-    private ItemDao itemDao;
 
     @Autowired
     FillUpMem fillUpMem;
