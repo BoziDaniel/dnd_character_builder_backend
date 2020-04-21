@@ -16,6 +16,11 @@ public class DndBackendApplication {
     @Autowired
     private APIService apiService;
 
+    @Autowired
+    @Qualifier("itemService")
+    private ItemDao itemDao;
+
+
     public static void main(String[] args) {
         SpringApplication.run(DndBackendApplication.class, args);
     }
@@ -23,5 +28,6 @@ public class DndBackendApplication {
     @PostConstruct
     public void afterInit() throws IOException {
         apiService.getAllItems();
+        System.out.println(itemDao.getAllItems());
     }
 }

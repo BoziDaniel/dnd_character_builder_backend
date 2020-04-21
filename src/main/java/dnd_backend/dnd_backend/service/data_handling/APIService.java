@@ -16,33 +16,60 @@ public class APIService {
 	@Autowired
 	private RemoteURLReader remoteURLReader;
 
+	private final static int LIMIT_OF_ITEMS = 20;
 	private String url = "";
+	private ArrayList<Item> items = new ArrayList<>();
 
 	public List<Item> getAllItems() throws IOException {
-		ArrayList<Item> items = new ArrayList<>();
+
 		this.setApiPath("https://www.dnd5eapi.co/api/equipment");
 		String result = remoteURLReader.readFromUrl(url);
 		JSONObject json = new JSONObject(result);
 		JSONArray jsonArray = json.getJSONArray("results");
-
-		jsonArray.forEach(resultObject -> {
-			System.out.println(resultObject.getClass());
-			String itemUrl = resultObject.getString("url");
-			System.out.println(itemUrl);
-			JSONObject itemObject2 = getNestedFetchData(new JSONObject(resultObject).get("url").toString());
-			JSONObject itemCostObject = new JSONObject(itemObject2.get("cost"));
-			items.add(new Item(resultObject.get("name").toString(),
-					itemCostObject.get("unit").toString(),
-					Double.parseDouble(itemCostObject.get("quantity").toString())));
-		});
+		addItemsToList(jsonArray);
+		System.out.println(items);
 
 		return items;
 	}
 
-	public JSONObject getNestedFetchData(String url) {
+	private void addItemsToList(JSONArray jsonArray) {
+		for(int itemObjectIndex = 0; itemObjectIndex < LIMIT_OF_ITEMS; itemObjectIndex ++) {
+
+			JSONObject itemObject = jsonArray.getJSONObject(itemObjectIndex);
+			String itemUrl = itemObject.getString("url");
+
+			JSONObject detailedItemObject = getNestedFetchData(itemUrl);
+			JSONObject itemCostObject = (JSONObject) detailedItemObject.get("cost");
+
+			Item assembledItemFromFetches = new Item(detailedItemObject.get("name").toString(),
+					itemCostObject.get("unit").toString(),
+					Double.parseDouble(itemCostObject.get("quantity").toString()));
+
+			items.add(assembledItemFromFetches);
+		}
+	}
+
+/*
+	private void addItemsToList(JSONArray jsonArray) {
+		jsonArray.forEach(resultObject -> {
+
+			JSONObject itemObject = (JSONObject) resultObject;
+			String itemUrl = itemObject.getString("url");
+
+			JSONObject detailedItemObject = getNestedFetchData(itemUrl);
+			JSONObject itemCostObject = (JSONObject) detailedItemObject.get("cost");
+
+			items.add(new Item(detailedItemObject.get("name").toString(),
+					itemCostObject.get("unit").toString(),
+					Double.parseDouble(itemCostObject.get("quantity").toString())));
+		});
+	}
+*/
+
+	private JSONObject getNestedFetchData(String url) {
 		try {
 
-			String result = remoteURLReader.readFromUrl(url);
+			String result = remoteURLReader.readFromUrl("https://www.dnd5eapi.co" + url);
 			return new JSONObject(result);
 
 		} catch (IOException e) {
