@@ -1,6 +1,7 @@
-package dnd_backend.dnd_backend.model;
+package dnd_backend.dnd_backend.model.character;
 
-import java.util.Map;
+import java.util.List;
+
 
 public class Character {
     private String id;
@@ -8,13 +9,13 @@ public class Character {
     private String clas;
     private int characterLvl;
     private String img;
-    private Map<String, Integer> stats;
-    private Map<String, Integer> skills;
+    private List<Stat> stats;
+    private List<Skill> skills;
     private Inventory inventory;
     private int skillPoints;
     private int statPoints;
 
-    public Character(String id, String name, String clas, int characterLvl, String img, Map<String, Integer> stats, Map<String, Integer> skills, Inventory inventory, int skillPoints, int statPoints) {
+    public Character(String id, String name, String clas, int characterLvl, String img, List<Stat> stats, List<Skill> skills, Inventory inventory, int skillPoints, int statPoints) {
         this.id = id;
         this.name = name;
         this.clas = clas;
@@ -67,19 +68,19 @@ public class Character {
         this.img = img;
     }
 
-    public Map<String, Integer> getStats() {
+    public List<Stat> getStats() {
         return stats;
     }
 
-    public void setStats(Map<String, Integer> stats) {
+    public void setStats(List<Stat> stats) {
         this.stats = stats;
     }
 
-    public Map<String, Integer> getSkills() {
+    public List<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(Map<String, Integer> skills) {
+    public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
 
@@ -105,5 +106,21 @@ public class Character {
 
     public void setStatPoints(int statPoints) {
         this.statPoints = statPoints;
+    }
+
+    @Override
+    public String toString() {
+        return "Character{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", class='" + clas + '\'' +
+                ", characterLvl=" + characterLvl +
+                ", img='" + img + '\'' +
+                ", stats=" + stats +
+                ", skills=" + skills +
+                ", inventory=" + inventory +
+                ", skillPoints=" + skillPoints +
+                ", statPoints=" + statPoints +
+                '}';
     }
 }

@@ -1,6 +1,6 @@
 package dnd_backend.dnd_backend.service.dao.implementation;
 
-import dnd_backend.dnd_backend.model.Character;
+import dnd_backend.dnd_backend.model.character.Character;
 
 import java.util.ArrayList;
 import java.util.List;

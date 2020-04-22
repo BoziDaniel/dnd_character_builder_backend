@@ -1,4 +1,6 @@
-package dnd_backend.dnd_backend.model;
+package dnd_backend.dnd_backend.model.character;
+
+import dnd_backend.dnd_backend.model.Item;
 
 import java.util.HashMap;
 import java.util.Map;
