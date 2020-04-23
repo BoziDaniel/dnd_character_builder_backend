@@ -7,7 +7,7 @@ import java.util.List;
 public interface CharacterDao {
     List<Character> getCharacters();
 
-    void add(Character character);
+    Character addCharacter(Character character);
 
 
 }

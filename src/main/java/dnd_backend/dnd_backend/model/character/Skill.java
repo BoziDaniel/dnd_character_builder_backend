@@ -13,6 +13,9 @@ public class Skill {
         this.url = url;
     }
 
+    public Skill() {
+    }
+
     public String getName() {
         return name;
     }
