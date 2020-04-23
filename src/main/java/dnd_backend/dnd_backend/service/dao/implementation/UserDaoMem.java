@@ -28,16 +28,8 @@ public class UserDaoMem implements UserDao {
     }
 
     @Override
-    public boolean userLogin(User user) {
-        User searchedUser = users.stream()
-                .filter(userInMem -> userInMem.getUserName().equals(user.getUserName()))
-                .findFirst().orElse(null);
-
-        return searchedUser != null;
-    }
-
-    @Override
     public void userRegistration(User user) {
+        System.out.println("registration " + user.getUserName());
         users.add(user);
     }
 }

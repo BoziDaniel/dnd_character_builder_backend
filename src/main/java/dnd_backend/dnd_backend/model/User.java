@@ -3,13 +3,13 @@ package dnd_backend.dnd_backend.model;
 public class User {
 
     private String email;
-    private String userName;
+    private String username;
     private String password;
     private String passwordConfirm;
 
-    public User(String email, String userName, String password, String passwordConfirm) {
+    public User(String email, String username, String password, String passwordConfirm) {
         this.setEmail(email);
-        this.setUserName(userName);
+        this.setUserName(username);
         this.setPassword(password);
         this.setPasswordConfirm(passwordConfirm);
     }
@@ -23,11 +23,11 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
