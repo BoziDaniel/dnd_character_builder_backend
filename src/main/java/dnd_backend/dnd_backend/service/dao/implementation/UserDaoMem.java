@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Qualifier("userService")
@@ -27,7 +28,16 @@ public class UserDaoMem implements UserDao {
     }
 
     @Override
-    public void addUser(User user) {
+    public boolean userLogin(User user) {
+        User searchedUser = users.stream()
+                .filter(userInMem -> userInMem.getUserName().equals(user.getUserName()))
+                .findFirst().orElse(null);
+
+        return searchedUser != null;
+    }
+
+    @Override
+    public void userRegistration(User user) {
         users.add(user);
     }
 }

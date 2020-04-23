@@ -10,5 +10,7 @@ public interface UserDao {
 
     void setUser(List<User> newUsers);
 
-    void addUser(User user);
+    boolean userLogin(User user);
+
+    void userRegistration(User user);
 }

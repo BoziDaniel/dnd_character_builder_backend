@@ -16,10 +16,15 @@ public class UserController {
     @Qualifier("userService")
     private UserDao userDao;
 
-    @PostMapping("/user/add")
-    public User addUser(@RequestBody User user) {
-        this.userDao.addUser(user);
+    @PostMapping("/user/registration")
+    public User registration(@RequestBody User user) {
+        this.userDao.userRegistration(user);
         return user;
+    }
+
+    @PostMapping("/user/login")
+    public boolean login(@RequestBody User user) {
+        return this.userDao.userLogin(user);
     }
 
     @GetMapping("/user/list")
