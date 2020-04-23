@@ -17,16 +17,17 @@ public class UserDaoMem implements UserDao {
 
     @Override
     public List<User> getUsers() {
-        return null;
+        users.add(new User("roland@gmail.com", "admin", "admin", "admin"));
+        return users;
     }
 
     @Override
     public void setUser(List<User> newUsers) {
-
+        this.users = newUsers;
     }
 
     @Override
-    public void add(User user) {
-
+    public void addUser(User user) {
+        users.add(user);
     }
 }

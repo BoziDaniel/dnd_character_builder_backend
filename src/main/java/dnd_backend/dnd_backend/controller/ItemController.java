@@ -17,7 +17,7 @@ public class ItemController {
     private ItemDao itemDao;
 
     @GetMapping("/item/list")
-    public List<Item> items() {
+    public List<Item> getItems() {
         return itemDao.getItems();
     }
 

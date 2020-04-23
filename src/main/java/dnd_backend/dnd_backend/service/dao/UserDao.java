@@ -10,5 +10,5 @@ public interface UserDao {
 
     void setUser(List<User> newUsers);
 
-    void add(User user);
+    void addUser(User user);
 }
