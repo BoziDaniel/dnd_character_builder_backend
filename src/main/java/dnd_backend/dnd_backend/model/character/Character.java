@@ -1,5 +1,8 @@
 package dnd_backend.dnd_backend.model.character;
 
+import dnd_backend.dnd_backend.model.Item;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -11,7 +14,7 @@ public class Character {
     private String img;
     private List<Stat> stats;
     private List<Skill> skills;
-   // private Inventory inventory;
+    private List<Item> inventory;
     private int skillPoints;
     private int statPoints;
 
@@ -19,7 +22,7 @@ public class Character {
         this.name = name;
     }
 
-    public Character(String id, String name, String clas, int characterLvl, String img, List<Stat> stats, List<Skill> skills, int skillPoints, int statPoints) {
+    public Character(String id, String name, String clas, int characterLvl, String img, List<Stat> stats, List<Skill> skills, int skillPoints, int statPoints, List<Item> inventory) {
         this.id = id;
         this.name = name;
         this.clas = clas;
@@ -27,12 +30,13 @@ public class Character {
         this.img = img;
         this.stats = stats;
         this.skills = skills;
-       // this.inventory = inventory;
+        this.inventory = inventory;
         this.skillPoints = skillPoints;
         this.statPoints = statPoints;
+
     }
 
-    public Character( String name, String clas, int characterLvl, String img) {
+    public Character(String id, String name, String clas, int characterLvl, String img) {
         this.name = name;
         this.clas = clas;
         this.characterLvl = characterLvl;
@@ -40,6 +44,14 @@ public class Character {
     }
 
     public Character() {
+    }
+
+    public List<Item> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(List<Item> inventory) {
+        this.inventory = inventory;
     }
 
     public String getId() {
@@ -97,14 +109,7 @@ public class Character {
     public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
-//
-//    public Inventory getInventory() {
-//        return inventory;
-//    }
-//
-//    public void setInventory(Inventory inventory) {
-//        this.inventory = inventory;
-//    }
+
 
     public int getSkillPoints() {
         return skillPoints;
@@ -127,12 +132,10 @@ public class Character {
         return "Character{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", class='" + clas + '\'' +
+                ", clas='" + clas + '\'' +
                 ", characterLvl=" + characterLvl +
                 ", img='" + img + '\'' +
-                ", stats=" + stats +
-                ", skills=" + skills +
-//                ", inventory=" + inventory +
+                ", inventory=" + inventory +
                 ", skillPoints=" + skillPoints +
                 ", statPoints=" + statPoints +
                 '}';

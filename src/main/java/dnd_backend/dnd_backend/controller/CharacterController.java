@@ -10,31 +10,17 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
-public class CharacterBuilderController {
-
-    @Autowired
-    @Qualifier("itemService")
-    private ItemDao itemDao;
-
+public class CharacterController {
     @Autowired
     @Qualifier("characterService")
     private CharacterDao characterDao;
-
-
-    @GetMapping("/item/list")
-    public List<Item> items() {
-        return itemDao.getItems();
-    }
-
 
     @GetMapping("/characters")
     public List<Character> getAllCharacters() {
         System.out.println("get request happened");
         return characterDao.getCharacters();
-
     }
     @PostMapping("/add-new-character")
     public Character addACharacter(@RequestBody Character character) {
@@ -46,5 +32,4 @@ public class CharacterBuilderController {
         return character;
 
     }
-
 }
