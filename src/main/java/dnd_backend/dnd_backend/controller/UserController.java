@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
@@ -19,10 +22,14 @@ public class UserController {
     @Autowired
     private LoginHandler loginHandler;
 
+
     @PostMapping("/user/registration")
-    public User registration(@RequestBody User user) {
+    public User registration(@RequestBody @Valid User user) {
+        //System.out.println("user registered: " + user.toString());
         this.userDao.userRegistration(user);
+        System.out.println("uc: " + user.toString());
         return user;
+
     }
 
     @PostMapping("/user/login")
