@@ -1,10 +1,15 @@
 package dnd_backend.dnd_backend.model;
 
-public class User {
+import javax.validation.constraints.NotEmpty;
 
+public class User {
+    @NotEmpty
     private String email;
+    @NotEmpty
     private String username;
+    @NotEmpty
     private String password;
+    @NotEmpty
     private String passwordConfirm;
 
     public User(String email, String username, String password, String passwordConfirm) {
@@ -44,5 +49,15 @@ public class User {
 
     public void setPasswordConfirm(String passwordConfirm) {
         this.passwordConfirm = passwordConfirm;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", passwordConfirm='" + passwordConfirm + '\'' +
+                '}';
     }
 }

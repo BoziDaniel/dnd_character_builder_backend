@@ -20,8 +20,4 @@ public class ItemController {
     public List<Item> getItems() {
         return itemDao.getItems();
     }
-
-
-
-
 }

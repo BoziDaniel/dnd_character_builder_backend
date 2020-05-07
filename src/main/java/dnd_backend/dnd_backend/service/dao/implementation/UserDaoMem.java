@@ -25,11 +25,17 @@ public class UserDaoMem implements UserDao {
     @Override
     public void setUser(List<User> newUsers) {
         this.users = newUsers;
+
+
     }
 
     @Override
     public void userRegistration(User user) {
-        System.out.println("registration " + user.getUserName());
         users.add(user);
+        System.out.println("lö users:");
+        for (User userr : users) {
+            System.out.println(userr.toString());
+        }
+
     }
 }
