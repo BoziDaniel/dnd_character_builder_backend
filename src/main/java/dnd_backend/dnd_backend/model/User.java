@@ -3,13 +3,11 @@ package dnd_backend.dnd_backend.model;
 import javax.validation.constraints.NotEmpty;
 
 public class User {
-    @NotEmpty
     private String email;
     @NotEmpty
     private String username;
     @NotEmpty
     private String password;
-    @NotEmpty
     private String passwordConfirm;
 
     public User(String email, String username, String password, String passwordConfirm) {

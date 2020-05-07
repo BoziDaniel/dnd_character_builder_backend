@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -25,7 +25,8 @@ public class UserController {
 
     @PostMapping("/user/registration")
     public User registration(@RequestBody @Valid User user) {
-        //System.out.println("user registered: " + user.toString());
+        System.out.println("post request /user/registration");
+        System.out.println("user registered: " + user.toString());
         this.userDao.userRegistration(user);
         System.out.println("uc: " + user.toString());
         return user;
@@ -34,6 +35,7 @@ public class UserController {
 
     @PostMapping("/user/login")
     public User login(@RequestBody Login login) {
+        System.out.println(login.toString());
         return this.loginHandler.handleLogin(login);
     }
 

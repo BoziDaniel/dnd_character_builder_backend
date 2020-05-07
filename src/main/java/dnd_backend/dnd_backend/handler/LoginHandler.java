@@ -18,13 +18,12 @@ public class LoginHandler {
     private UserDao userDao;
 
     public User handleLogin(Login login) {
-        User searchedUser = new User("", login.getUsername(), login.getPassword(),"" );
-
+        String userName = login.getUsername();
+        String password = login.getPassword();
         List<User> users = userDao.getUsers();
 
         User foundUser = users.stream()
-                .filter(userInMem -> userInMem.getUserName() != null)
-                .filter(userInMem -> userInMem.getUserName().equals(searchedUser.getUserName()))
+                .filter(userInMem -> userInMem.getUserName().equals(userName)&&userInMem.getPassword().equals(password))
                 .findFirst().orElse(null);
 
         return foundUser;
