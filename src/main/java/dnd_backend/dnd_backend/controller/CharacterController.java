@@ -19,14 +19,15 @@ public class CharacterController {
 
     @GetMapping("/characters")
     public List<Character> getAllCharacters() {
-        System.out.println("get request happened");
+        System.out.println("get request happened /characters");
         return characterDao.getCharacters();
     }
+
     @PostMapping("/add-new-character")
     public Character addACharacter(@RequestBody Character character) {
-
         characterDao.addCharacter(character);
-        System.out.println("post request happened");
+        System.out.println("post request happened /add-new-character");
+
         System.out.println(character.toString());
         System.out.println(characterDao.getCharacters().toString());
         return character;
